@@ -80,6 +80,7 @@
     <ClInclude Include="Huffman.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Library.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Translation.h" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

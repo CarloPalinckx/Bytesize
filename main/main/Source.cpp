@@ -12,9 +12,12 @@ using namespace std;
 
 int main(){
 
-	cout << " ===========================" << endl;
-	cout << "  HUFFMAN TEXT COMPRESSION " << endl;
-	cout << " ===========================" << endl;
+	cout << " =====================================" << endl;
+	cout << "  BYTESIZE TEXT COMPRESSION           "<< endl;
+	cout << "  - version 1.0                       " << endl;
+	cout << "  - distribution 15-2-2016            " << endl;
+	cout << "  - github.com/CarloPalincx/Bytesize  " << endl; 
+	cout << " =====================================" << endl;
 	cout << " (a) Compress" << endl;
 	cout << " (b) Decompress" << endl;
 
@@ -62,6 +65,7 @@ int main(){
 					}
 				}
 
+				system("cls");
 				cout << endl << " compressing....." << endl;
 
 				start = clock();
@@ -125,6 +129,7 @@ int main(){
 					}
 				}
 
+				system("cls");
 				cout << endl << " Decompressing....." << endl;
 
 				start = clock();
@@ -149,6 +154,7 @@ int main(){
 				}
 			}
 		} else {
+			system("cls");
 			mode = 'x';
 		}
 
