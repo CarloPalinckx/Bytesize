@@ -16,7 +16,6 @@ int Convertor::getFileSize(string location){
 	if (location == "") location = inputLocation;
 
 	ifstream file(location.c_str(), ifstream::in | ifstream::binary);
-
 	if (!file.is_open()) return -1;
 
 	file.seekg(0, ios::end);
@@ -73,7 +72,7 @@ void Convertor::FileToHuffman(string outputLocation){
 	ifstream inputFile;
 	ofstream outputFile;
 
-	outputFile.open(outputLocation, ofstream::out | ofstream::trunc);
+	outputFile.open(outputLocation, ofstream::out | ofstream::trunc | ofstream::binary);
 	inputFile.open(inputLocation);
 
 	if (inputFile.fail()){
@@ -86,13 +85,14 @@ void Convertor::FileToHuffman(string outputLocation){
 		inputData += inputLine;
 	}
 
+	// start overhead
+
 	for (int i = 0; i < inputData.size(); i++){
 		letter = inputData[i];
 
 		for (size_t i = 0; i < huffman.translation.size(); i++){
 			if (huffman.translation[i].letter == letter){
 				outputData += huffman.translation[i].bitset;
-				outputData += "+";
 			}
 		}
 	}
@@ -112,29 +112,25 @@ void Convertor::FileToHuffman(string outputLocation){
 	// end overhead
 
 	string outputToParts = outputData.substr(0, (outputData.size() - modulo));
-
-	char toLetter[8] = { '0', '0', '0', '0', '0', '0', '0', '0' };
 	int counter = 0;
-
-	for (size_t i = 0; i < outputToParts.size(); i++){
-		if (outputToParts[i] != '+'){
-			toLetter[counter] = outputToParts[i];
-			if (counter < (partsAmount - 1)) counter++;
-			else {
-				string formatChar = "";
-				
-				for (int i = 0; i < 8; i++)	formatChar += toLetter[i];
-				char formattedLetter = stoi(formatChar);
-
-				outputFile << formattedLetter;
-
-				//reset
-				counter = 0;
-				char toLetter[8] = { '0', '0', '0', '0', '0', '0', '0', '0' };
-			}
-		}
-	}
 	
+	for (size_t i = 0; i < outputToParts.size(); i = i + partsAmount){
+		string part = outputToParts.substr(i, partsAmount);
+		bitset <8> binary;
+
+		binary.set();
+
+		for (size_t i2 = 0; i2 < part.size(); i2++){
+			int index = ((partsAmount - 1) - i2);
+			if (part[i2] == '1') binary.set(index, 0);
+		}
+		
+		binary.flip();
+		unsigned char letter = binary.to_ulong();
+		outputFile << letter;
+	}
+
+	outputFile << outputData.substr((outputData.size() - modulo),outputData.size());
 	outputFile.close();
 
 	cout << " " << "successfully compressed: " << inputLocation << endl;
@@ -159,7 +155,7 @@ void Convertor::HuffmanToFile(string outputLocation){
 
 	fileInfo = buffer.str().substr(0, (buffer.str().find("::ends")));
 	fileData = buffer.str().erase(0, (buffer.str().find("::ends") + 6));
-	
+
 	Decoder decoder(fileInfo, fileData);
 
 	outputFile << decoder.decodeInfo();
