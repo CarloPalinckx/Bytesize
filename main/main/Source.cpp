@@ -71,7 +71,6 @@ int main(){
 				convertor.FileToHuffman(outputLabel);
 				compressedCount = convertor.getFileSize(outputLabel);
 
-
 				if (compressedCount > 0) cout << endl << " Compressed your file with: " << (fullCount - compressedCount) / (fullCount / 100) << "%" << endl;
 
 				//
