@@ -1,29 +1,13 @@
-
-/* 
-
------ HUFFMAN CLASS -----
-
-FUNCTION DESCRIPTIONS:
-- buildDictionary(): 
-
-
-USED FOR:
-
-
-REQUIRES:
-- LOCATION OF THE INPUT FILE
-- LOCATION TO CREATE OUTPUT FILE
-
-*/
-
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <bitset>
 #include <vector>
+#include <sstream>
+#include "Book.h"
 #include "Level.h"
-#include "Translation.h"
 #include "Library.h"
+#include "Translation.h"
 
 #ifndef Huffman_H
 #define Huffman_H

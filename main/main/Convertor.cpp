@@ -1,16 +1,8 @@
 #include "Convertor.h"
-#include "Decoder.h"
-#include "Huffman.h"
-#include <iostream>
-#include <fstream>
-#include <bitset>
-#include <vector>
-#include <sstream>
 
 Convertor::Convertor(string inputLocation) {
 	Convertor::inputLocation = inputLocation;
 }
-
 
 int Convertor::getFileSize(string location){
 	if (location == "") location = inputLocation;
@@ -47,7 +39,7 @@ void Convertor::FileToBinary(string outputLocation){
 		inputData += inputLine;
 	}
 
-	for (int i = 0; i < inputData.size(); i++){
+	for (size_t i = 0; i < inputData.size(); i++){
 		letter = inputData[i];
 		bitset <8> binary = letter;
 		binaryList.push_back(binary);
@@ -55,7 +47,7 @@ void Convertor::FileToBinary(string outputLocation){
 		fileCount += 8;
 	}
 
-	for (int i = 0; i < binaryList.size(); i++) { outputData += binaryList[i].to_string<char, string::traits_type, string::allocator_type>(); }
+	for (size_t i = 0; i < binaryList.size(); i++) { outputData += binaryList[i].to_string<char, string::traits_type, string::allocator_type>(); }
 
 	outputFile << outputData;
 	outputFile.close();
@@ -87,7 +79,7 @@ void Convertor::FileToHuffman(string outputLocation){
 
 	// start overhead
 
-	for (int i = 0; i < inputData.size(); i++){
+	for (size_t i = 0; i < inputData.size(); i++){
 		letter = inputData[i];
 
 		for (size_t i = 0; i < huffman.translation.size(); i++){
@@ -102,7 +94,7 @@ void Convertor::FileToHuffman(string outputLocation){
 	outputFile << "s" << huffman.translation.size();
 	outputFile << ",m" << modulo << "::";
 
-	for (int i = 0; i < huffman.translation.size(); i++){
+	for (size_t i = 0; i < huffman.translation.size(); i++){
 		string outputString = huffman.translation[i].bitset;
 		outputFile << huffman.translation[i].letter << outputString << "|*|";
 	}
@@ -134,11 +126,6 @@ void Convertor::FileToHuffman(string outputLocation){
 	outputFile.close();
 
 	cout << " " << "successfully compressed: " << inputLocation << endl;
-}
-
-bool Convertor::in_vector(vector <string> haystack,string needle){
-	for (size_t i = 0; i < haystack.size(); i++) if (haystack[i] == needle) return true;
-	return false;
 }
 
 void Convertor::HuffmanToFile(string outputLocation){

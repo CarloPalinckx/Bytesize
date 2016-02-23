@@ -1,19 +1,3 @@
-
-/*
-
------ LEVEL CLASS -----
-
-FUNCTION DESCRIPTIONS:
-
-
-USED FOR:
-
-
-REQUIRES:
-
-
-*/
-
 #include <string>
 #include <fstream>
 #include <vector>
@@ -27,17 +11,14 @@ REQUIRES:
 using namespace std;
 
 class Level {
-public:
-	Level(int i);
-	int i;
-	int totalOccurance;
-	void addBook(Book);
-	void printBooks();
-	void assignInfo();
-	vector <Book> Books;
-	void shredLevel();
-private:
-	bool binarySwitch;
+	public:
+		Level(int i);
+		int index;
+		int totalOccurance;
+		void addBook(Book);
+		void printBooks();
+		void assignInfo();
+		vector <Book> books;
 };
 
 #endif
