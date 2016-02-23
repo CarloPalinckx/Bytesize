@@ -1,19 +1,3 @@
-
-/*
-
------ BOOK CLASS -----
-
-FUNCTION DESCRIPTIONS:
-
-
-USED FOR:
-
-
-REQUIRES:
-
-
-*/
-
 #include <string>
 #include <fstream>
 #include <vector>

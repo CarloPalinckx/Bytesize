@@ -1,9 +1,4 @@
 #include "Huffman.h"
-#include "Book.h"
-#include "Level.h"
-#include "Library.h"
-#include "Translation.h"
-#include <sstream>
 
 Huffman::Huffman(string inputLocation) {
 	Huffman::inputLocation = inputLocation;
@@ -60,14 +55,14 @@ vector<Level> Huffman::buildLibrary(){
 
 	Library library(level);
 
-	return library.library;
+	return library.levels;
 }
 
 vector<Translation> Huffman::buildTranslation(){
 	vector<Translation> translated;
 
-	for (size_t i = 0; i < decodingLibrary[0].Books.size(); i++){
-		Translation translation(decodingLibrary[0].Books[i].letter, decodingLibrary);
+	for (size_t i = 0; i < decodingLibrary[0].books.size(); i++){
+		Translation translation(decodingLibrary[0].books[i].letter, decodingLibrary);
 		translated.push_back(translation);
 	}
 

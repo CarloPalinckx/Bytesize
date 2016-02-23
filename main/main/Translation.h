@@ -1,8 +1,8 @@
-
 #include <string>
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include "Library.h"
 
 #ifndef Translation_H

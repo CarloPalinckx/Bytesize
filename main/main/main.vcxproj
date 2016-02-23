@@ -67,6 +67,7 @@
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Convertor.cpp" />
     <ClCompile Include="Decoder.cpp" />
+    <ClCompile Include="Helper.cpp" />
     <ClCompile Include="Huffman.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Library.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="Convertor.h" />
     <ClInclude Include="Book.h" />
     <ClInclude Include="Decoder.h" />
+    <ClInclude Include="Helper.h" />
     <ClInclude Include="Huffman.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Library.h" />
@@ -91,6 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
