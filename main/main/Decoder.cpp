@@ -1,10 +1,4 @@
 #include "Decoder.h"
-#include <sstream>
-#include <utility>
-#include <bitset>
-#include <algorithm>
-#include <bitset>
-#include <sstream>
 
 Decoder::Decoder(string fileInfo, string fileData) {
 	Decoder::fileInfo = fileInfo;

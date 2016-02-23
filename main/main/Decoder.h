@@ -1,5 +1,9 @@
 #include <string>
 #include <vector>
+#include <utility>
+#include <bitset>
+#include <algorithm>
+#include <sstream>
 #include "Book.h"
 
 using namespace std;

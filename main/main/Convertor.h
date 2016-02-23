@@ -1,5 +1,11 @@
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <bitset>
 #include <vector>
+#include <sstream>
+#include "Decoder.h"
+#include "Huffman.h"
 
 using namespace std;
 
@@ -13,7 +19,6 @@ public:
 	void FileToHuffman(string outputLocation = "null");
 	void HuffmanToFile(string outputLocation = "null");
 	int getFileSize(string location = "");
-	bool in_vector(vector <string> haystack, string needle);
 private:
 	string inputLocation;
 };
